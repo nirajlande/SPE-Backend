@@ -10,6 +10,7 @@ import com.had.selfhelp.jwt.JwtUtils;
 import com.had.selfhelp.service.CustomerServices;
 import com.had.selfhelp.service.MyCustomUserDetails;
 import com.had.selfhelp.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
+@Slf4j
 @RequestMapping("/api/auth")
 public class AuthController {
 
@@ -44,6 +46,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Customer> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+        log.info("login");
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -72,6 +75,7 @@ public class AuthController {
 
     @PostMapping("/register/user") //ADMIN
     ResponseEntity<?> createUser(@RequestBody Customer user){
+        log.info("registering the customer");
         user.setId(0);
         System.out.println(user);
         customerServices.save(user);
