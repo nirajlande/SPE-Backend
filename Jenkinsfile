@@ -10,11 +10,11 @@ pipeline {
             }
         }
 
-        // stage("Running Test cases"){
-        //     steps{
-        //         sh "mvn clean test"
-        //     }
-        // }
+        stage("Running Test cases"){
+            steps{
+                sh "mvn clean test"
+            }
+        }
 
         stage("Maven Build"){
             steps{
