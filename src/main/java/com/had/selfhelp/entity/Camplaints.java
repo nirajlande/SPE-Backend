@@ -1,6 +1,8 @@
 package com.had.selfhelp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.had.selfhelp.configuration.AesEncryptor;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -17,16 +19,21 @@ public class Camplaints {
     @Column(name="services")
     private ArrayList services;
 
+    @Convert(converter = AesEncryptor.class)
     @Column(name="vehicleNo")
     private String vehicleNo;
 
+    @Convert(converter = AesEncryptor.class)
     @Column(name="vehicleType")
     private String vehicleType;
+    @Convert(converter = AesEncryptor.class)
     @Column(name="status")
     private String status;
+    @Convert(converter = AesEncryptor.class)
     @Column(name="remark")
     private String remark;
 
+    @Convert(converter = AesEncryptor.class)
     @Column(name = "address")
     private String address;
 

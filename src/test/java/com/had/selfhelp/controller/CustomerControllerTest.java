@@ -40,13 +40,6 @@ class CustomerControllerTest {
     @MockBean
     private CustomerServices customerServices;
 
-    /**
-     * Method under test: {@link CustomerController#getcomplaints(int)}
-     */
-
-    /**
-     * Method under test: {@link CustomerController#save(Customer)}
-     */
     @Test
     void testSave2() throws Exception {
         doNothing().when(customerServices).save((Customer) any());
@@ -69,9 +62,7 @@ class CustomerControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    /**
-     * Method under test: {@link CustomerController#validate(LoginRequest)}
-     */
+
 
 }
 

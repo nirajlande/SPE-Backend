@@ -34,9 +34,7 @@ class CustomerServiceImplTest {
     @Autowired
     private CustomerServiceImpl customerServiceImpl;
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#save(Customer)}
-     */
+
     @Test
     void testSave() {
         Customer customer = new Customer();
@@ -69,9 +67,7 @@ class CustomerServiceImplTest {
         assertEquals("jane.doe@example.org", customer1.getEmail());
     }
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#save(Customer)}
-     */
+
     @Test
     void testSave2() {
         when(customerRepository.save((Customer) any())).thenThrow(new RuntimeException());
@@ -88,9 +84,7 @@ class CustomerServiceImplTest {
         verify(customerRepository).save((Customer) any());
     }
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#login(LoginRequest)}
-     */
+
     @Test
     void testLogin() {
         Customer customer = new Customer();
@@ -106,13 +100,7 @@ class CustomerServiceImplTest {
         verify(customerRepository).findByUsernameAndPassword((String) any(), (String) any());
     }
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#login(LoginRequest)}
-     */
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#login(LoginRequest)}
-     */
     @Test
     void testLogin3() {
         when(customerRepository.findByUsernameAndPassword((String) any(), (String) any()))
@@ -121,9 +109,7 @@ class CustomerServiceImplTest {
         verify(customerRepository).findByUsernameAndPassword((String) any(), (String) any());
     }
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#costumerComplaint(Customer)}
-     */
+
     @Test
     void testCostumerComplaint() {
         Customer customer = new Customer();
@@ -151,9 +137,7 @@ class CustomerServiceImplTest {
         verify(customerRepository).getReferenceById((Integer) any());
     }
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#costumerComplaint(Customer)}
-     */
+
     @Test
     void testCostumerComplaint2() {
         when(customerRepository.getReferenceById((Integer) any())).thenThrow(new RuntimeException());
@@ -170,9 +154,6 @@ class CustomerServiceImplTest {
         verify(customerRepository).getReferenceById((Integer) any());
     }
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#findById(int)}
-     */
     @Test
     void testFindById() {
         Customer customer = new Customer();
@@ -188,9 +169,6 @@ class CustomerServiceImplTest {
         verify(customerRepository).getReferenceById((Integer) any());
     }
 
-    /**
-     * Method under test: {@link CustomerServiceImpl#findById(int)}
-     */
     @Test
     void testFindById2() {
         when(customerRepository.getReferenceById((Integer) any())).thenThrow(new RuntimeException());

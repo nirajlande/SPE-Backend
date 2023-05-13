@@ -42,9 +42,6 @@ class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    /**
-     * Method under test: {@link UserService#findAllUsers()}
-     */
     @Test
     void testFindAllUsers() {
         ArrayList<User> userList = new ArrayList<>();
@@ -55,19 +52,12 @@ class UserServiceTest {
         verify(userRepository).findAll();
     }
 
-    /**
-     * Method under test: {@link UserService#findAllUsers()}
-     */
     @Test
     void testFindAllUsers2() {
         when(userRepository.findAll()).thenThrow(new ExpressionException("An error occurred"));
         assertThrows(ExpressionException.class, () -> userService.findAllUsers());
         verify(userRepository).findAll();
     }
-
-    /**
-     * Method under test: {@link UserService#findByUserId(int)}
-     */
     @Test
     void testFindByUserId() {
         User user = new User();
@@ -84,9 +74,6 @@ class UserServiceTest {
         verify(userRepository).findById((Integer) any());
     }
 
-    /**
-     * Method under test: {@link UserService#findByUserId(int)}
-     */
     @Test
     void testFindByUserId2() {
         when(userRepository.findById((Integer) any())).thenReturn(Optional.empty());
@@ -94,9 +81,6 @@ class UserServiceTest {
         verify(userRepository).findById((Integer) any());
     }
 
-    /**
-     * Method under test: {@link UserService#findByUserId(int)}
-     */
     @Test
     void testFindByUserId3() {
         when(userRepository.findById((Integer) any())).thenThrow(new ExpressionException("An error occurred"));
@@ -104,9 +88,6 @@ class UserServiceTest {
         verify(userRepository).findById((Integer) any());
     }
 
-    /**
-     * Method under test: {@link UserService#createUser(Customer)}
-     */
     @Test
     void testCreateUser() {
         Role role = new Role();
@@ -137,9 +118,6 @@ class UserServiceTest {
         verify(userRepository).save((User) any());
     }
 
-    /**
-     * Method under test: {@link UserService#createUser(Customer)}
-     */
     @Test
     void testCreateUser2() {
         Role role = new Role();
@@ -161,9 +139,6 @@ class UserServiceTest {
         verify(userRepository).save((User) any());
     }
 
-    /**
-     * Method under test: {@link UserService#save(User)}
-     */
     @Test
     void testSave() {
         User user = new User();
@@ -187,9 +162,6 @@ class UserServiceTest {
         assertTrue(userService.findAllUsers().isEmpty());
     }
 
-    /**
-     * Method under test: {@link UserService#save(User)}
-     */
     @Test
     void testSave2() {
         when(userRepository.save((User) any())).thenThrow(new ExpressionException("An error occurred"));
